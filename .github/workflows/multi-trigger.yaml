@@ -1,0 +1,54 @@
+name: Multi-Trigger Workflow
+
+# Multiple triggers in one workflow
+on:
+  # Runs on every push to main
+  push:
+    branches: [ main ]
+
+  # Runs when a PR is opened or updated targeting main
+  pull_request:
+    branches: [ main ]
+
+  # Runs every night at midnight UTC
+  schedule:
+    - cron: "0 0 * * *"
+
+  # Allows manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose deployment environment"
+        required: true
+        default: "staging"
+
+jobs:
+  ci-pipeline:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run CI Tests
+        run: echo "Running CI pipeline on push to main"
+
+  pr-checks:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run PR Checks
+        run: echo "Running PR checks before merging"
+
+  nightly-build:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Nightly Build
+        run: echo "Running nightly build at midnight"
+
+  manual-deploy:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual Deployment
+        run: echo "Deploying to ${{ github.event.inputs.environment }}"
