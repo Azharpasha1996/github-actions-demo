@@ -6,7 +6,7 @@ on:
     push:
         branches: [ main ]
 
-# Runs when a PR is opened or updated targetting main
+# Runs when a PR is opened or updated targetting main from fearure
     pull_request:
         branches: [ main ]
 
