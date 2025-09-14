@@ -13,4 +13,4 @@ jobs:
     demo:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "jobs running succesfully on main branch"
+            - run: echo "jobs running succesfully on develop branch"
