@@ -9,7 +9,7 @@ on:
         #     - 'hotfix/**'
         # paths:
         #     - 'src/**'
-          paths-ignore:
+        paths-ignore:
             - 'src/test/**'
 
 
