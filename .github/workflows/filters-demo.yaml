@@ -7,6 +7,10 @@ on:
             - develop
         # branches-ignore: 
         #     - 'hotfix/**'
+        paths:
+            - 'src/**'
+        #   paths-ignore:
+        #     - 'src/test/**'
 
 
 jobs:
