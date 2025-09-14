@@ -2,15 +2,14 @@ name: Demo workflow filters
 
 on:
     push:
-        branches:
+        branches: 
             - main
             - develop
-        branches-ignore:
-            - hotfix/*
-
+        # branches-ignore: 
+        #     - hotfix/*
 
 jobs:
     demo:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "pipeline triggered"
+            - run: echo " job runs succesfully"
