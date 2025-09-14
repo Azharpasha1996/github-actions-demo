@@ -2,15 +2,15 @@ name: Demo workflow filters
 
 on:
     push: 
-        branches: 
-            - main
-            - develop
-        # branches-ignore: 
-        #     - 'hotfix/**'
+        # branches: 
+        #     - main
+        #     - develop
+        branches-ignore: 
+            - 'hotfix/**'
 
 
 jobs:
     demo:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "jobs running succesfully on develop branch"
+            - run: echo "jobs running succesfully"
