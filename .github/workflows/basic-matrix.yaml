@@ -1,0 +1,21 @@
+name: Basic Matrix - Node.js Versions
+
+on:
+    push: 
+        branches: [ main ]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node: [16, 18, 20]
+
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ matrix.node }}
+            - run: npm install
+            - run: npm test
